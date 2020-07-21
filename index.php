@@ -1,24 +1,56 @@
 <?php
     define("TITLE", "V-A-M-P");
     define("SUBTITLE", "Welcome to V-A-M-P");
-    $fav_color="Black";
-    $my_name="Andrew";
-    $birth_year = 1995;
+    $favColor="Black";
+    $myName="Andrew";
+    //$myName="A&ntildedrew";
+    $birthYear = 1995;
+    $password = "BadPassword";
+    $password = sha1($password);
 
     date_default_timezone_get('America/Phoenix');
 
     $today = date('l, F j, Y'); //l is monday-sunday
-    $this_year = date('Y');
+    $thisYear = date('Y');
 
-    $my_age = ($this_year - $birth_year);
+    $myAge = ($thisYear - $birthYear);
 
-    $some_people = array("Bob", "Bill", "Jimmy", "James");
+    //Concat example
+    $greeting = "Hello ";
+    $greeting .= "Sir or" . " Madam. ";
+    $greeting.strtolower();
+    echo $greeting;
 
-    $bob_is = array(
-      name => "Bob",
-      creepy => true,
-      age => 29
+
+    //$some_people = array("Bob", "Bill", "Jimmy", "James");
+
+    $users = array(
+      array(
+        name => "Bob",
+        premium => true,
+        age => 29
+      ),
+      array(
+        name => "Bill",
+        premium => false,
+        age => 22
+      ),
+      array(
+        name => "Jimmy",
+        premium => true,
+        age => 19
+      )
     );
+
+    $currentUser = 0;
+
+    if($users[$currentUser][premium]){
+      echo("Thank you for being a \"premium member!\"");
+    } else {
+      echo("Click here to upgrade to premium");
+    }
+
+
 ?>
 
 
@@ -40,16 +72,19 @@
     <p><?php echo $today; ?></p>
 
     <h3>My Name:</h3>
-    <p><?php echo $my_name; ?></p>
+    <p><?php echo $myName; ?></p>
 
     <h3>My Age:</h3>
-    <p><?php echo $my_age; ?></p>
+    <p><?php echo $myAge; ?></p>
 
     <h3>My Favorite Color:</h3>
-    <p><?php echo $fav_color; ?></p>
+    <p><?php echo $favColor; ?></p>
     <hr></hr>
 
-    <h5>Hi, I'm <?php echo $some_people[0] , " and I'm " , $bob_is[age]?></h5>
+    <h5>Hello, <?php echo $users[0][name] , " you are " , $users[0][age]?></h5>
+    
+    <!-- Copywrite Footer -->
+    <small>&copy;<?php echo $thisYear; ?> - <?php echo $myName; ?></small>
   </body>
 </html>
 
